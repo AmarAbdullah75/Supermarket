@@ -56,15 +56,31 @@
     <div class="container">
         <button class="card">
             <a href="<?php echo base_url("ProdukC ")?>">
-            <img src="assets/images/kelola.png" alt="kelola.png">
+            <img src="assets/images/produk.png" alt="kelola.png">
             <div class="card-text">Kelola Produk</div>
             </a>
         </button>
 
-        <div class="card" onclick="location.href='read_transaksi_konser.php'">
-            <img src="assets/images/trs.png" alt="trs.png">
-            <div class="card-text">Transaksi</div>
-        </div>
+        <button class="card">
+            <a href="<?php echo base_url("KasirC ")?>">
+            <img src="assets/images/kasir.png" alt="kelola.png">
+            <div class="card-text">Kelola Kasir</div>
+            </a>
+        </button>
+
+        <button class="card">
+            <a href="<?php echo base_url("PembeliC ")?>">
+            <img src="assets/images/pembeli.png" alt="kelola.png">
+            <div class="card-text">Kelola Pembeli</div>
+            </a>
+        </button>
+        
+        <button class="card">
+            <a href="<?php echo base_url("TransaksiC ")?>">
+            <img src="assets/images/cart.png" alt="kelola.png">
+            <div class="card-text">Transaksi Pembelian</div>
+            </a>
+        </button>
     </div>
 
 </body>
