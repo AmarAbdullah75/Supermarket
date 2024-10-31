@@ -11,11 +11,12 @@
 <div class="container mt-5">
     <h1>Daftar Kasir</h1>
     
-    <a href="<?php echo site_url('home'); ?>" class="btn btn-secondary">Beranda</a>
+    <a href="<?php echo site_url('DashboardC'); ?>" class="btn btn-secondary">Beranda</a>
     <a href="<?php echo site_url('KasirC/create'); ?>" class="btn btn-primary">Tambah Kasir</a>
 
     <table class="table mt-3">
         <thead>
+        
             <tr>
                 <th>No</th>
                 <th>Nama</th>
