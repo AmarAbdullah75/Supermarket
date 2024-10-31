@@ -54,10 +54,12 @@
     <h1>Beranda</h1>
 
     <div class="container">
-        <div class="card" onclick="location.href='read_konser.php'">
+        <button class="card">
+            <a href="<?php echo base_url("ProdukC ")?>">
             <img src="assets/images/kelola.png" alt="kelola.png">
-            <div class="card-text">Kelola Konser</div>
-        </div>
+            <div class="card-text">Kelola Produk</div>
+            </a>
+        </button>
 
         <div class="card" onclick="location.href='read_transaksi_konser.php'">
             <img src="assets/images/trs.png" alt="trs.png">
