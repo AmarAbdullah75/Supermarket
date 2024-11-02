@@ -11,7 +11,7 @@ class AuthenticationC extends CI_Controller{
     }
 
     public function index(){
-        if(get_cookie("1lY5m")){
+        if(get_cookie("1lY5m")=="d00bfb47dcf3020e768b6fff96bb722b1c876f2d70ee271de710c5f76f991c66"){
             $this->session->set_userdata("1lY5m",true);
 
             $data = $this->KasirM->get_all_kasir();
