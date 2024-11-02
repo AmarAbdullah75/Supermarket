@@ -27,4 +27,22 @@ class KasirM extends CI_Model {
     public function delete_kasir($id_kasir) {
         return $this->db->delete('tblKasir', ['id_kasir' => $id_kasir]);
     }
+
+    public function get_nama_by_id($id){
+        $this->db->select("nama");
+        $this->db->from("tblKasir");
+        $this->db->where("id_kasir", $id);
+        return $this->db->get()->row()->nama;
+    }
+    // public function get_id_by_nama($nama) {
+    //     $this->db->select('id_kasir');
+    //     $this->db->from('tblKasir');
+    //     $this->db->where('nama', $nama);
+    //     return $this->db->get()->row()->id_kasir;
+    // }
+    // public function get_nama(){
+    //     $this->db->select("nama");
+    //     $this->db->from("tblKasir");
+    //     return $this->db->get()->result();
+    // }
 }

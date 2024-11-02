@@ -7,12 +7,56 @@
     <title>Daftar Produk</title>
 </head>
 <body>
-
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid w-100">
+        <a class="navbar-brand" href="#">Supermarket</a>
+        <a class="btn btn-outline-danger" href="<?php echo site_url("AuthenticationC/logout")?>">Logout</a>
+      </div>
+    </nav>
 <div class="container mt-5">
     <h1>Daftar Produk</h1>
     
-    <a href="DashboardC" class="btn btn-secondary">Beranda</a>
-    <a href="<?php echo site_url('ProdukC/create'); ?>" class="btn btn-primary">Tambah Produk</a>
+    <a href="dashboard" class="btn btn-secondary">Beranda</a>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalC">Tambah Produk</button>
+    <div class="modal fade" id="modalC" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Tambah Produk</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="<?php echo site_url('ProdukC/store'); ?>" method="post">
+                        <div class="mb-3">
+                            <label for="nama_produk" class="form-label">Nama Produk:</label>
+                            <input type="text" name="nama_produk" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="jenis" class="form-label">Jenis:</label>
+                            <input type="text" name="jenis" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="kadaluarsa" class="form-label">Kadaluarsa:</label>
+                            <input type="date" name="kadaluarsa" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="harga" class="form-label">Harga:</label>
+                            <input type="number" name="harga" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="berat" class="form-label">Berat:</label>
+                            <input type="number" name="berat" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="stok" class="form-label">Stok:</label>
+                            <input type="number" name="stok" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Tambah</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <table class="table mt-3">
         <thead>
@@ -36,7 +80,10 @@
                 <td><?php echo $item->nama_produk; ?></td>
                 <td><?php echo $item->jenis; ?></td>
                 <td><?php echo $item->kadaluarsa; ?></td>
-                <td><?php echo $item->harga; ?></td>
+                <td><?php
+                $harga = "Rp " . number_format($item->harga,0,',','.');
+                 echo $harga; 
+                 ?></td>
                 <td><?php echo $item->berat; ?></td>
                 <td><?php echo $item->stok; ?></td>
                 <td>
@@ -61,29 +108,26 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="jenis" class="form-label">Jenis:</label>
-                                    <input type="text" name="jenis" class="form-control" value="<?php echo $item->jenis; ?>">
+                                    <input type="text" name="jenis" class="form-control" value="<?php echo $item->jenis; ?>" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="kadaluarsa" class="form-label">Kadaluarsa:</label>
-                                    <input type="date" name="kadaluarsa" class="form-control" value="<?php echo $item->kadaluarsa; ?>">
+                                    <input type="date" name="kadaluarsa" class="form-control" value="<?php echo $item->kadaluarsa; ?>" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="harga" class="form-label">Harga:</label>
-                                    <input type="number" name="harga" class="form-control" value="<?php echo $item->harga; ?>">
+                                    <input type="number" name="harga" class="form-control" value="<?php echo $item->harga; ?>" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="berat" class="form-label">Berat:</label>
-                                    <input type="number" name="berat" class="form-control" value="<?php echo $item->berat; ?>">
+                                    <input type="number" name="berat" class="form-control" value="<?php echo $item->berat; ?>" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="stok" class="form-label">Stok:</label>
-                                    <input type="number" name="stok" class="form-control" value="<?php echo $item->stok; ?>">
+                                    <input type="number" name="stok" class="form-control" value="<?php echo $item->stok; ?>" required>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Update</button>
                             </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>

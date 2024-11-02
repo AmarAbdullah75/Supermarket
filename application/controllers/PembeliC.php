@@ -6,17 +6,19 @@ class PembeliC extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('PembeliM');
+        $this->load->library('session');
     }
 
     public function index() {
-        $data['tblPembeli'] = $this->PembeliM->get_all();
-        $this->load->view('PembeliV', $data);
+        if($this->session->userdata("1lY5m")===true){
+            $this->session->set_userdata("path","pembeli");
+            $data['tblPembeli'] = $this->PembeliM->get_all();
+            $this->load->view('PembeliV', $data);
+        }else{
+            redirect("login");
+        }
     }
-
-    public function create() {
-        $this->load->view('PembeliV_create');
-    }
-
+    
     public function store() {
         $data = [
             'nama' => $this->input->post('nama'),
@@ -25,14 +27,9 @@ class PembeliC extends CI_Controller {
             'tanggal_lahir' => $this->input->post('tanggal_lahir')
         ];
         $this->PembeliM->insert($data);
-        redirect('PembeliC');
+        redirect('pembeli');
     }
-
-    public function edit($id) {
-        $data['pembeli'] = $this->PembeliM->get_by_id($id);
-        
-    }
-
+    
     public function update($id) {
         $data = [
             'nama' => $this->input->post('nama'),
@@ -41,11 +38,11 @@ class PembeliC extends CI_Controller {
             'tanggal_lahir' => $this->input->post('tanggal_lahir')
         ];
         $this->PembeliM->update($id, $data);
-        redirect('PembeliC');
+        redirect('pembeli');
     }
-
+    
     public function delete($id) {
         $this->PembeliM->delete($id);
-        redirect('PembeliC');
+        redirect('pembeli');
     }
 }

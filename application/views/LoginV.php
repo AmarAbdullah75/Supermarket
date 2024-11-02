@@ -11,10 +11,10 @@
 <div class="container">
 	<div class="screen">
 		<div class="screen__content">
-			<form class="login" method="post">
+			<form class="login" method="post" action="<?php echo site_url("AuthenticationC/authentication")?>">
 				<div class="login__field">
 					<i class="login__icon fas fa-user"></i>
-					<input type="text" name="username" class="login__input" placeholder="User name / Email">
+					<input type="text" name="username" class="login__input" placeholder="Username">
 				</div>
 				<div class="login__field">
 					<i class="login__icon fas fa-lock"></i>
@@ -43,5 +43,11 @@
 		</div>		
 	</div>
 </div>
+	<?php if ($this->session->flashdata('error')): ?>
+	    <script>alert('<?php echo $this->session->flashdata('error'); ?>');</script>
+	<?php endif; ?>
+	<?php if ($this->session->flashdata('authNull')): ?>
+	    <script>alert('<?php echo $this->session->flashdata('authNull'); ?>');</script>
+	<?php endif; ?>
 </body>
 </html>

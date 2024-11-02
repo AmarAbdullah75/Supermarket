@@ -24,4 +24,23 @@ class PembeliM extends CI_Model {
         $this->db->where('id_pembeli', $id);
         return $this->db->delete('tblPembeli');
     }
+
+    public function get_nama_by_id($id) {
+        $this->db->select('nama'); // Memilih kolom 'nama' saja
+        $this->db->from('tblPembeli');
+        $this->db->where('id_pembeli', $id);
+        return $this->db->get()->row()->nama;
+    }
+    public function get_id_by_nama($nama) {
+        $this->db->select('id_pembeli'); // Memilih kolom 'nama' saja
+        $this->db->from('tblPembeli');
+        $this->db->where('nama', $nama);
+        return $this->db->get()->row()->id_pembeli;
+    }
+    public function get_nama(){
+        $this->db->select("nama");
+        $this->db->from("tblPembeli");
+        return $this->db->get()->result();
+    }
+    
 }
